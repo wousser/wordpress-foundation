@@ -149,19 +149,77 @@ function modernize_it(){
 add_action( 'wp_enqueue_scripts', 'modernize_it' );
 
 function foundation_js(){
-    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/javascripts/foundation/jquery.reveal.js', 'jQuery', '1.1', true ); 
+    // ## Optional javascripts (commented out) ##
+    //  - Uncomment to load js 
+    //  - Make sure to call functions
+
+    // Simple modal plugin
+    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.reveal.js', 'jQuery', '1.1', true ); 
     wp_enqueue_script( 'foundation-reveal' );
-    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/javascripts/foundation/jquery.orbit-1.4.0.js', 'jQuery', '1.4.0', true ); 
+
+    // Custom image/content slider plugin
+    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.orbit.js', 'jQuery', '1.4.0', true ); 
     wp_enqueue_script( 'foundation-orbit' );
-    wp_register_script( 'foundation-custom-forms', get_template_directory_uri() . '/javascripts/foundation/jquery.customforms.js', 'jQuery', '1.0', true ); 
+
+    // Adds ability to create custom form elements
+    wp_register_script( 'foundation-custom-forms', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.forms.js', 'jQuery', '1.0', true ); 
     wp_enqueue_script( 'foundation-custom-forms' );
-    wp_register_script( 'foundation-placeholder', get_template_directory_uri() . '/javascripts/foundation/jquery.placeholder.min.js', 'jQuery', '2.0.7', true ); 
+
+    // Adds placeholder functions to forms
+    wp_register_script( 'foundation-placeholder', get_template_directory_uri() . '/javascripts/foundation/jquery.placeholder.js', 'jQuery', '2.0.7', true ); 
     wp_enqueue_script( 'foundation-placeholder' );
-    wp_register_script( 'foundation-tooltips', get_template_directory_uri() . '/javascripts/foundation/jquery.tooltips.js', 'jQuery', '2.0.1', true ); 
+
+    // Adds tooltips functionality
+    wp_register_script( 'foundation-tooltips', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.tooltips.js', 'jQuery', '2.0.1', true ); 
     wp_enqueue_script( 'foundation-tooltips' );
-    wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/app.js', 'jQuery', '1.0', true ); 
+
+    //--------------Optional start---------------
+
+    // Add open/close functionality to accordions
+    //wp_register_script( 'foundation-accordian', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.accordion.js', 'jQuery', '3.2', true ); 
+    //wp_enqueue_script( 'foundation-accordian' );
+
+    // Adds the ability to close alerts
+    //wp_register_script( 'foundation-alerts', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.alerts.js', 'jQuery', '3.2', true ); 
+    //wp_enqueue_script( 'foundation-alerts' );
+
+    // Adds dropdown functionality for dropdown buttons and split buttons
+    //wp_register_script( 'foundation-buttons', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.buttons.js', 'jQuery', '3.2', true ); 
+    //wp_enqueue_script( 'foundation-buttons' );
+
+    // Image gallery plugin
+    //wp_register_script( 'foundation-clearing', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.clearing.js', 'jQuery', '1.0', true ); 
+    //wp_enqueue_script( 'foundation-clearing' );
+
+    // Adds functionality to navigation elements
+    //wp_register_script( 'foundation-navigation', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.navigation.js', 'jQuery', '3.2', true ); 
+    //wp_enqueue_script( 'foundation-navigation' );
+
+    // An awesome feature tour plugin
+    //wp_register_script( 'foundation-joyride', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.joyride.js', 'jQuery', '2.0.1', true ); 
+    //wp_enqueue_script( 'foundation-joyride' );
+
+    // Sweet new sticky nav plugin
+    //wp_register_script( 'foundation-magellan', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.magellan.js', 'jQuery', '0.0.1', true ); 
+    //wp_enqueue_script( 'foundation-magellan' );
+
+    // Adds helpful media query viewer tool
+    //wp_register_script( 'foundation-mediaQueryToggle', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.mediaQueryToggle.js', 'jQuery', '3.4', true ); 
+    //wp_enqueue_script( 'foundation-mediaQueryToggle' );
+
+    // Adds functionality for the top bar
+    //wp_register_script( 'foundation-topbar', get_template_directory_uri() . '/javascripts/foundation/jquery.foundation.topbar.js', 'jQuery', '2.0.1', true ); 
+    //wp_enqueue_script( 'foundation-topbar' );
+
+    //--------------Optional end---------------
+
+    // Use this js doc for all application specific JS
+    // Sets up javascript plugins
+    wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/foundation/app.js', 'jQuery', '1.0', true ); 
     wp_enqueue_script( 'foundation-app' );
-    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/off-canvas.js', 'jQuery', '1.0', true ); 
+
+    // Off Canvas layouts
+    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/jquery.offcanvas.js', 'jQuery', '1.0', true ); 
     wp_enqueue_script( 'foundation-off-canvas' );
 }
 

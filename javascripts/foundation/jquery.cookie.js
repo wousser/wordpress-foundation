@@ -1,5 +1,6 @@
+/*jshint eqnull:true */
 /*!
- * jQuery Cookie Plugin v1.3
+ * jQuery Cookie Plugin v1.2
  * https://github.com/carhartl/jquery-cookie
  *
  * Copyright 2011, Klaus Hartl
@@ -19,11 +20,11 @@
     return decodeURIComponent(s.replace(pluses, ' '));
   }
 
-  var config = $.cookie = function (key, value, options) {
+  $.cookie = function (key, value, options) {
 
-    // write
-    if (value !== undefined) {
-      options = $.extend({}, config.defaults, options);
+    // key and at least value given, set cookie...
+    if (value !== undefined && !/Object/.test(Object.prototype.toString.call(value))) {
+      options = $.extend({}, $.cookie.defaults, options);
 
       if (value === null) {
         options.expires = -1;
@@ -34,10 +35,10 @@
         t.setDate(t.getDate() + days);
       }
 
-      value = config.json ? JSON.stringify(value) : String(value);
+      value = String(value);
 
       return (document.cookie = [
-        encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+        encodeURIComponent(key), '=', options.raw ? value : encodeURIComponent(value),
         options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
         options.path    ? '; path=' + options.path : '',
         options.domain  ? '; domain=' + options.domain : '',
@@ -45,24 +46,23 @@
       ].join(''));
     }
 
-    // read
-    var decode = config.raw ? raw : decoded;
+    // key and possibly options given, get cookie...
+    options = value || $.cookie.defaults || {};
+    var decode = options.raw ? raw : decoded;
     var cookies = document.cookie.split('; ');
-    for (var i = 0, l = cookies.length; i < l; i++) {
-      var parts = cookies[i].split('=');
+    for (var i = 0, parts; (parts = cookies[i] && cookies[i].split('=')); i++) {
       if (decode(parts.shift()) === key) {
-        var cookie = decode(parts.join('='));
-        return config.json ? JSON.parse(cookie) : cookie;
+        return decode(parts.join('='));
       }
     }
 
     return null;
   };
 
-  config.defaults = {};
+  $.cookie.defaults = {};
 
   $.removeCookie = function (key, options) {
-    if ($.cookie(key) !== null) {
+    if ($.cookie(key, options) !== null) {
       $.cookie(key, null, options);
       return true;
     }
